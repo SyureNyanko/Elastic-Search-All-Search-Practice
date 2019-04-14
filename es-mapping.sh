@@ -1,4 +1,4 @@
-curl -X PUT $1':9200/all_search' -d '{
+curl -X PUT 'http://localhost:9200/page_all_search' -d '{
   "settings": {
     "index": {
       "analysis": {
@@ -13,7 +13,8 @@ curl -X PUT $1':9200/all_search' -d '{
             "tokenizer": "ja_text_tokenizer",
             "type": "custom",
             "char_filter": [
-              "icu_normalizer"
+              "icu_normalizer",
+	      "html_strip"
             ],
             "filter": [
               "kuromoji_part_of_speech"
